@@ -27,10 +27,14 @@
       url: https://vercel.com
       icon: ▲
       desc: 部署平台
-    - title: ChatGPT
-      url: https://chatgpt.com
-      icon: 🤖
-      desc: AI 智能助手
+    - title: cloudflare
+      url: https://dash.cloudflare.com
+      icon: 🌥️
+      desc: 免费cdn
+    - title: eu.org
+      url: https://inc.eu.org
+      icon: ✌🏻
+      desc: 免费域名
 
 - category: 开发工具
   links:
