@@ -4,14 +4,14 @@
       url: https://github.com/zhangsan19800101/chun-nav
       icon: 🕮
       desc: 春哥宇宙导航GitHub开源
-    - title: Vercel
-      url: https://vercel.com
-      icon: ▲
-      desc: 部署平台
-    - title: ChatGPT
-      url: https://chatgpt.com
+    - title: 爷们春哥
+      url: https://phpbb.chunge.it.eu.org
+      icon: 👨🏻‍⚖
+      desc: phpbb
+    - title: 春哥纯爷们论坛
+      url: https://flarum.chunge.it.eu.org
       icon: 🤖
-      desc: AI 智能助手
+      desc: Flarum
 
 - category: 常用推荐
   links:
