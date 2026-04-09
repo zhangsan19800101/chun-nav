@@ -16,6 +16,10 @@
       url: http://chunge.chez.com
       icon: 🍉
       desc: wordpress
+    - title: 春装
+      url: https://zhuangxiu.f5.si
+      icon: 🏠️
+      desc: HTML单页
 
 - category: 常用推荐
   links:
