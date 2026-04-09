@@ -2,8 +2,4 @@ baseURL: "/"
 languageCode: "zh-CN"
 title: "春哥宇宙导航"
 theme: ""
-
-# 禁用不需要的页面类型（消除日志警告）
-disableKinds:
-  - taxonomy
-  - taxonomyTerm
+disableKinds: ["taxonomy", "taxonomyTerm"]
