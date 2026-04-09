@@ -1,9 +1,9 @@
 - category: 春哥宇宙
   links:
-    - title: GitHub
-      url: https://github.com
-      icon: 🐙
-      desc: 代码托管平台
+    - title: 春哥宇宙导航
+      url: https://github.com/zhangsan19800101/chun-nav
+      icon: 🕮
+      desc: 春哥宇宙导航GitHub开源
     - title: Vercel
       url: https://vercel.com
       icon: ▲
