@@ -1,6 +1,10 @@
 - category: 春哥宇宙
   links:
     - title: 春哥宇宙导航
+      url: https://www.chunge.it.eu.org
+      icon: 😂
+      desc: 本导航页
+    - title: 春导开源
       url: https://github.com/zhangsan19800101/chun-nav
       icon: 🕮
       desc: 本导航GitHub开源
