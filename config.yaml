@@ -1,5 +1,0 @@
-baseURL: "/"
-languageCode: "zh-CN"
-title: "春哥宇宙导航"
-theme: ""
-disableKinds: ["taxonomy", "taxonomyTerm"]
