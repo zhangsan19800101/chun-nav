@@ -4,27 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 1. 核心标题与描述 (SEO 关键) -->
+    <!-- SEO 核心标签 -->
     <title>春哥宇宙导航 - 你的专属链接中心</title>
     <meta name="description" content="春哥宇宙导航，精选互联网优质资源。聚合常用推荐、开发工具与摸鱼专区，提供极简、高效的网址导航服务。">
     <meta name="keywords" content="春哥宇宙导航,网址导航,个人主页,开发工具,摸鱼,链接集合">
     <meta name="author" content="春哥">
     
-    <!-- 2. 搜索引擎指令 -->
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{{ .Permalink }}">
-
-    <!-- 3. Open Graph / 社交媒体分享优化 (微信/QQ/Twitter) -->
+    <!-- 社交媒体分享优化 -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="春哥宇宙导航">
     <meta property="og:description" content="精选互联网优质资源，你的专属链接中心。">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:site_name" content="春哥宇宙导航">
-
-    <!-- 4. 移动端优化 -->
-    <meta name="theme-color" content="#0070f3">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <style>
         :root {
@@ -62,7 +53,7 @@
             padding: 40px 0;
         }
 
-        /* --- 顶部标题样式 --- */
+        /* 顶部标题样式 */
         .site-header {
             text-align: center;
             margin-bottom: 30px;
@@ -197,7 +188,7 @@
 
         <!-- 搜索区域 -->
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="搜索本页链接..." autocomplete="off">
+            <input type="text" id="searchInput" placeholder="搜索链接、描述或网址..." autocomplete="off">
         </div>
 
         <!-- 动态生成内容 -->
@@ -233,18 +224,22 @@
 
             // 1. 遍历每一个链接卡片
             navItems.forEach(item => {
+                // 获取标题
                 const title = item.querySelector('.link-title').innerText.toLowerCase();
+                // 获取描述
                 const desc = item.querySelector('.link-desc').innerText.toLowerCase();
+                // 获取 URL (新增逻辑)
+                const url = item.getAttribute('href').toLowerCase();
                 
-                // 2. 如果包含关键词，显示；否则隐藏
-                if (title.includes(term) || desc.includes(term)) {
+                // 2. 只要任意一项包含关键词，就显示
+                if (title.includes(term) || desc.includes(term) || url.includes(term)) {
                     item.classList.remove('hidden');
                 } else {
                     item.classList.add('hidden');
                 }
             });
 
-            // 3. 智能隐藏空分类
+            // 3. 智能隐藏空分类（如果一个分类下没有结果，隐藏整个分类块）
             categoryGroups.forEach(group => {
                 const visibleItems = group.querySelectorAll('.nav-item:not(.hidden)');
                 if (visibleItems.length === 0) {
