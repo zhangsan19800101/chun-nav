@@ -1,3 +1,18 @@
+- category: 春哥宇宙
+  links:
+    - title: GitHub
+      url: https://github.com
+      icon: 🐙
+      desc: 代码托管平台
+    - title: Vercel
+      url: https://vercel.com
+      icon: ▲
+      desc: 部署平台
+    - title: ChatGPT
+      url: https://chatgpt.com
+      icon: 🤖
+      desc: AI 智能助手
+
 - category: 常用推荐
   links:
     - title: GitHub
