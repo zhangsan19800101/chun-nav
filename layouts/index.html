@@ -40,7 +40,7 @@
             padding: 40px 0;
         }
 
-        /* 搜索框 */
+        /* 搜索框样式 */
         .search-box {
             text-align: center;
             margin-bottom: 50px;
@@ -88,7 +88,7 @@
             border-radius: 12px;
             text-decoration: none;
             color: var(--text-main);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -101,6 +101,11 @@
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-color: rgba(0, 112, 243, 0.2);
+        }
+
+        /* 搜索隐藏时的样式 */
+        .hidden {
+            display: none !important;
         }
 
         .link-icon {
@@ -143,22 +148,25 @@
     <div class="container">
         <!-- 搜索区域 -->
         <div class="search-box">
-            <form action="https://www.google.com/search" method="GET">
-                <input type="text" name="q" placeholder="搜索内容..." autofocus autocomplete="off">
-            </form>
+            <!-- 添加了 id="searchInput" -->
+            <input type="text" id="searchInput" placeholder="搜索本页链接..." autocomplete="off">
         </div>
 
         <!-- 动态生成内容 -->
         {{ range .Site.Data.links }}
-            <h2>{{ .category }}</h2>
-            <div class="link-grid">
-                {{ range .links }}
-                <a href="{{ .url }}" class="link-card" target="_blank">
-                    <div class="link-icon">{{ .icon }}</div>
-                    <div class="link-title">{{ .title }}</div>
-                    <div class="link-desc">{{ .desc }}</div>
-                </a>
-                {{ end }}
+            <!-- 给分类加个类名，方便整体隐藏 -->
+            <div class="category-group">
+                <h2>{{ .category }}</h2>
+                <div class="link-grid">
+                    {{ range .links }}
+                    <!-- 给卡片加了 class="nav-item" -->
+                    <a href="{{ .url }}" class="link-card nav-item" target="_blank">
+                        <div class="link-icon">{{ .icon }}</div>
+                        <div class="link-title">{{ .title }}</div>
+                        <div class="link-desc">{{ .desc }}</div>
+                    </a>
+                    {{ end }}
+                </div>
             </div>
         {{ end }}
 
@@ -167,6 +175,41 @@
     <footer>
         &copy; {{ now.Year }} {{ .Site.Title }} | Powered by Hugo & Vercel
     </footer>
+
+    <!-- 搜索脚本 -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const navItems = document.querySelectorAll('.nav-item');
+        const categoryGroups = document.querySelectorAll('.category-group');
+
+        searchInput.addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase().trim();
+
+            // 1. 遍历每一个链接卡片
+            navItems.forEach(item => {
+                const title = item.querySelector('.link-title').innerText.toLowerCase();
+                const desc = item.querySelector('.link-desc').innerText.toLowerCase();
+                
+                // 2. 如果包含关键词，显示；否则隐藏
+                if (title.includes(term) || desc.includes(term)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // 3. 智能隐藏空分类
+            // 如果一个分类下的所有链接都被隐藏了，就把整个分类（包括标题）隐藏掉
+            categoryGroups.forEach(group => {
+                const visibleItems = group.querySelectorAll('.nav-item:not(.hidden)');
+                if (visibleItems.length === 0) {
+                    group.classList.add('hidden');
+                } else {
+                    group.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
