@@ -1,0 +1,36 @@
+- category: 常用推荐
+  links:
+    - title: GitHub
+      url: https://github.com
+      icon: 🐙
+      desc: 代码托管平台
+    - title: Vercel
+      url: https://vercel.com
+      icon: ▲
+      desc: 部署平台
+    - title: ChatGPT
+      url: https://chatgpt.com
+      icon: 🤖
+      desc: AI 智能助手
+
+- category: 开发工具
+  links:
+    - title: Stack Overflow
+      url: https://stackoverflow.com
+      icon: 📚
+      desc: 程序员问答社区
+    - title: Can I Use
+      url: https://caniuse.com
+      icon: 🔍
+      desc: CSS 兼容性查询
+
+- category: 摸鱼专区
+  links:
+    - title: Bilibili
+      url: https://bilibili.com
+      icon: 📺
+      desc: 哔哩哔哩
+    - title: YouTube
+      url: https://youtube.com
+      icon: ▶️
+      desc: 视频网站
