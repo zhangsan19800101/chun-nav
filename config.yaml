@@ -1,0 +1,9 @@
+baseURL: "/"
+languageCode: "zh-CN"
+title: "春哥宇宙导航"
+theme: ""
+
+# 添加下面这段配置，告诉 Hugo 禁用分类和标签功能
+disableKinds:
+  - taxonomy
+  - taxonomyTerm
