@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>
+    
+    <!-- 1. 核心标题与描述 (SEO 关键) -->
+    <title>春哥宇宙导航 - 你的专属链接中心</title>
+    <meta name="description" content="春哥宇宙导航，精选互联网优质资源。聚合常用推荐、开发工具与摸鱼专区，提供极简、高效的网址导航服务。">
+    <meta name="keywords" content="春哥宇宙导航,网址导航,个人主页,开发工具,摸鱼,链接集合">
+    <meta name="author" content="春哥">
+    
+    <!-- 2. 搜索引擎指令 -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ .Permalink }}">
+
+    <!-- 3. Open Graph / 社交媒体分享优化 (微信/QQ/Twitter) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="春哥宇宙导航">
+    <meta property="og:description" content="精选互联网优质资源，你的专属链接中心。">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:site_name" content="春哥宇宙导航">
+
+    <!-- 4. 移动端优化 -->
+    <meta name="theme-color" content="#0070f3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
     <style>
         :root {
             --bg-color: #f4f6f8;
@@ -40,11 +62,33 @@
             padding: 40px 0;
         }
 
+        /* --- 顶部标题样式 --- */
+        .site-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .site-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(45deg, #0070f3, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .site-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
         /* 搜索框样式 */
         .search-box {
             text-align: center;
             margin-bottom: 50px;
-            margin-top: 20px;
         }
 
         .search-box input {
@@ -103,7 +147,6 @@
             border-color: rgba(0, 112, 243, 0.2);
         }
 
-        /* 搜索隐藏时的样式 */
         .hidden {
             display: none !important;
         }
@@ -146,20 +189,23 @@
 <body>
 
     <div class="container">
+        <!-- 顶部标题区域 -->
+        <header class="site-header">
+            <h1 class="site-title">春哥宇宙导航</h1>
+            <p class="site-subtitle">探索互联网的无限可能</p>
+        </header>
+
         <!-- 搜索区域 -->
         <div class="search-box">
-            <!-- 添加了 id="searchInput" -->
             <input type="text" id="searchInput" placeholder="搜索本页链接..." autocomplete="off">
         </div>
 
         <!-- 动态生成内容 -->
         {{ range .Site.Data.links }}
-            <!-- 给分类加个类名，方便整体隐藏 -->
             <div class="category-group">
                 <h2>{{ .category }}</h2>
                 <div class="link-grid">
                     {{ range .links }}
-                    <!-- 给卡片加了 class="nav-item" -->
                     <a href="{{ .url }}" class="link-card nav-item" target="_blank">
                         <div class="link-icon">{{ .icon }}</div>
                         <div class="link-title">{{ .title }}</div>
@@ -173,7 +219,7 @@
     </div>
 
     <footer>
-        &copy; {{ now.Year }} {{ .Site.Title }} | Powered by Hugo & Vercel
+        &copy; {{ now.Year }} 春哥宇宙导航 | Powered by Hugo & Vercel
     </footer>
 
     <!-- 搜索脚本 -->
@@ -199,7 +245,6 @@
             });
 
             // 3. 智能隐藏空分类
-            // 如果一个分类下的所有链接都被隐藏了，就把整个分类（包括标题）隐藏掉
             categoryGroups.forEach(group => {
                 const visibleItems = group.querySelectorAll('.nav-item:not(.hidden)');
                 if (visibleItems.length === 0) {
